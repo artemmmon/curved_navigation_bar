@@ -88,8 +88,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-//      color: widget.backgroundColor,
-      color: Colors.transparent,
+      color: widget.backgroundColor,
       height: widget.height,
       child: Stack(
         overflow: Overflow.visible,
