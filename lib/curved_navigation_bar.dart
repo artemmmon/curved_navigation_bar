@@ -17,7 +17,7 @@ class CurvedNavigationBar extends StatefulWidget {
     this.animationDuration = const Duration(milliseconds: 600),
     this.height = 75.0,
   })  : assert(items != null),
-        assert(items.length >= 1),
+        assert(items.length >= 1), // ignore: prefer_is_empty
         assert(0 <= index && index < items.length),
         assert(0 <= height && height <= 75.0),
         super(key: key);

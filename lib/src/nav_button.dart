@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class NavButton extends StatelessWidget {
+  const NavButton({this.onTap, this.position, this.length, this.index, this.child});
+
   final double position;
   final int length;
   final int index;
   final ValueChanged<int> onTap;
   final Widget child;
-
-  NavButton({this.onTap, this.position, this.length, this.index, this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,8 @@ class NavButton extends StatelessWidget {
         child: Container(
             height: 75.0,
             child: Transform.translate(
-              offset: Offset(
-                  0, difference < 1.0 / length ? verticalAlignment * 40 : 0),
-              child: Opacity(
-                  opacity: difference < 1.0 / length * 0.99 ? opacity : 1.0,
-                  child: child),
+              offset: Offset(0, difference < 1.0 / length ? verticalAlignment * 40 : 0),
+              child: Opacity(opacity: difference < 1.0 / length * 0.99 ? opacity : 1.0, child: child),
             )),
       ),
     );
