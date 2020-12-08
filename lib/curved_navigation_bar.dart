@@ -18,7 +18,7 @@ class CurvedNavigationBar extends StatefulWidget {
     this.height = 75.0,
   })  : assert(items != null),
         assert(items.length >= 1), // ignore: prefer_is_empty
-        assert(0 <= index && index < items.length),
+        assert(0 <= index && index < items.length, 'Wrong index: $index; Items length: ${items.length}'),
         assert(0 <= height && height <= 75.0),
         super(key: key);
 
@@ -74,12 +74,16 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
       final newPosition = widget.index / _length;
       _startingPos = _pos;
       _endingIndex = widget.index;
-      _animationController.animateTo(newPosition, duration: widget.animationDuration, curve: widget.animationCurve);
+      _animationController.animateTo(newPosition,
+          duration: widget.animationDuration, curve: widget.animationCurve);
     }
 
-    if(oldWidget.items.length != widget.items.length) {
+    if (oldWidget.items.length != widget.items.length) {
       setState(() {
+        _icon = widget.items[widget.index];
         _length = widget.items.length;
+        _pos = widget.index / _length;
+        _startingPos = widget.index / _length;
       });
     }
   }
@@ -174,7 +178,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
     setState(() {
       _startingPos = _pos;
       _endingIndex = index;
-      _animationController.animateTo(newPosition, duration: widget.animationDuration, curve: widget.animationCurve);
+      _animationController.animateTo(newPosition,
+          duration: widget.animationDuration, curve: widget.animationCurve);
     });
 
     lastTimeClicked = DateTime.now();
