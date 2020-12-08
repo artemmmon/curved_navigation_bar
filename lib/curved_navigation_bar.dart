@@ -76,6 +76,12 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
       _endingIndex = widget.index;
       _animationController.animateTo(newPosition, duration: widget.animationDuration, curve: widget.animationCurve);
     }
+
+    if(oldWidget.items.length != widget.items.length) {
+      setState(() {
+        _length = widget.items.length;
+      });
+    }
   }
 
   @override
